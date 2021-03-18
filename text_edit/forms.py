@@ -1,6 +1,8 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
+from .models import Post
+
 widget_textarea = forms.Textarea(
     attrs={
         'class': 'form-control'
@@ -24,8 +26,6 @@ class TextForm(forms.Form):
         if len(text) <= 5:
             raise ValidationError('テキストが短すぎます。6文字以上にしてください')
         return data
-
-from .models import Post
 
 class PostForm(forms.ModelForm):
     class Meta:
